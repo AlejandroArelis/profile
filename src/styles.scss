@@ -8,7 +8,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   @extend .text-light;
-  box-shadow: 0 0 10px $red inset;
+  // box-shadow: 0 0 10px $red inset;
 
   animation: moverDerechaIzquierda 2s linear infinite;
   background-color:$gray-900;
@@ -31,6 +31,10 @@ body {
   }
 }
 
+a {
+  @extend .text-light;
+}
+
 p,
 label,
 h1,
@@ -38,14 +42,48 @@ h2,
 h3,
 h4,
 h5,
+a,
 h6 {
   margin: 0 !important;
   text-shadow: 0 0 2px black;
 }
 
 .blur {
-  background: rgba(255, 255, 255, 0.3 );
+  background: rgba(255, 255, 255, 0.1 );
   backdrop-filter: blur(10px);
   @extend .rounded;
   @extend .shadow;
+  @extend .p-2;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+mat-icon {
+  font-size: 20px !important;
+}
+
+mat-icon.small {
+  font-size: 10px !important;
+}
+
+.bg-indigo {
+  background-color: $indigo;
+}
+
+.bg-purple {
+  background-color: $purple;
+}
+
+.bg-orange {
+  background-color: $orange;
+}
+
+.bg-pink {
+  background-color: $pink;
+}
+
+.progress, .progress-stacked {
+  background-color: $gray-800 !important;
 }

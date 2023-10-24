@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { ItemListComponent } from './item-list.component';
-import { CopyModule } from '../copy/copy.module';
+import { ItemListComponent } from 'src/app/components/item-list/item-list.component';
+import { CopyModule } from 'src/app/components/copy/copy.module';
 
 @NgModule({
   declarations: [

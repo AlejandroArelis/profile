@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AppComponent } from 'src/app/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { ItemListModule } from './components/item-list/item-list.module';
-import { JobsModule } from './components/jobs/jobs.module';
+import { ItemListModule } from 'src/app/components/item-list/item-list.module';
+import { JobsModule } from 'src/app/components/jobs/jobs.module';
 
 @NgModule({
   declarations: [AppComponent],

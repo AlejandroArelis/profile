@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/bootstrap/scss/bootstrap";
-@import "../node_modules/bootstrap/scss/_variables";
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap/scss/_variables";
 
 html,
 body {
@@ -8,7 +8,6 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   @extend .text-light;
-  // box-shadow: 0 0 10px $red inset;
 
   animation: moverDerechaIzquierda 2s linear infinite;
   background-color:$gray-900;
@@ -49,7 +48,7 @@ h6 {
 }
 
 .blur {
-  background: rgba(255, 255, 255, 0.1 );
+  background: rgba(0, 0, 0, 0.5 );
   backdrop-filter: blur(10px);
   @extend .rounded;
   @extend .shadow;

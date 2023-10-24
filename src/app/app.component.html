@@ -32,9 +32,9 @@
     </div>
   </div>
 
-  <div class="row g-2">
-    <div class="col-4">
-      <div class="row g-2 mt-2">
+  <div class="row g-3 mt-1">
+    <div class="col-12 col-lg-4">
+      <div class="row g-3">
         <div class="col-12">
           <div class="blur">
             <h1 class="text-center">Desarrollo frontend</h1>
@@ -76,6 +76,19 @@
             <item-list *ngFor="let item of otherList" [configuration]="item"></item-list>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-8">
+      <div class="row g-3">
+        <div class="col-12">
+          <div class="blur">
+            <h1 class="text-center">Experiencia laboral</h1>
+          </div>
+        </div>
+
+        <jobs *ngFor="let job of jobsList" [configuration]="job"></jobs>
+      
       </div>
     </div>
   </div>

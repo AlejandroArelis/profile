@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { ItemListModule } from './components/item-list/item-list.module';
+import { JobsModule } from './components/jobs/jobs.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +15,8 @@ import { ItemListModule } from './components/item-list/item-list.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    ItemListModule
+    ItemListModule,
+    JobsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

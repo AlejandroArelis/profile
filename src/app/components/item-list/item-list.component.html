@@ -3,7 +3,7 @@
     <mat-icon *ngIf="configuration.icon.type === 'material'">{{configuration.icon.value}}</mat-icon>
     <img *ngIf="configuration.icon.type === 'svg'" [src]="'/assets/icons/' + configuration.icon.value" style="width: 15px;">
   </div>
-  <div [ngClass]="{'col-auto': !configuration.progress, 'col-3': configuration.progress}">
+  <div [ngClass]="{'col-auto': !configuration.progress, 'col-4': configuration.progress}">
     <a *ngIf="configuration.type !== 'text'" [href]="configuration.href">{{configuration.text}}</a>
     <copy *ngIf="configuration.type === 'text'" [value]="configuration.text" [type]="'text'"></copy>
   </div>

@@ -57,7 +57,7 @@ export class AppComponent {
     type: "text",
     progress : {
       value: 80,
-      color: "bg-primary"
+      color: "bg-purple"
     }
   }, {
     icon: {
@@ -310,11 +310,11 @@ export class AppComponent {
   }, {
     title: "Desarrollador Front End",
     company: "Spinar+",
-    location: "Guadalajara, Jaliscos",
+    location: "Guadalajara, Jalisco",
     dates: "de agosto de 2020 a agosto del 2021",
     proyects: [{
       title: "Xponect",
-      description: "Fui o líder del proyecto front end, tomé decisiones técnicas, ayudé a planificar el proyecto, supervisé el código y gracias a mi experiencia como desarrollador Full Stack tuve colaboraciones interdisciplinarias con el equipo de diseño y el equipo de back-end, en donde fui de ayuda en la creación de nuevos servicios y microservicios. Xponect fue una plataforma especializada en eventos y salones virtuales ideada por el comienzo COVID-19. La plataforma fue inmersiva gracias a la implementación de realidad aumentada e intuitiva gracias a su parecido a una red social."
+      description: "Fui líder del proyecto frontend, tomé decisiones técnicas, ayudé a planificar el proyecto, supervisé el código y gracias a mi experiencia como desarrollador Full Stack tuve colaboraciones interdisciplinarias con el equipo de diseño y el equipo de back-end, en donde fui de ayuda en la creación de nuevos servicios y microservicios. Xponect fue una plataforma especializada en eventos y salones virtuales ideada por el comienzo COVID-19. La plataforma fue inmersiva gracias a la implementación de realidad aumentada e intuitiva gracias a su parecido a una red social."
     }]
   }, {
     title: "Desarrollador Full Stack",

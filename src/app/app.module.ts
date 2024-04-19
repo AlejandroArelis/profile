@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ItemListModule } from 'src/app/components/item-list/item-list.module';
 import { JobsModule } from 'src/app/components/jobs/jobs.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [AppComponent],

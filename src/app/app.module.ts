@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { ItemListModule } from 'src/app/components/item-list/item-list.module';
 import { JobsModule } from 'src/app/components/jobs/jobs.module';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,7 @@ import { JobsModule } from 'src/app/components/jobs/jobs.module';
     ItemListModule,
     JobsModule
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

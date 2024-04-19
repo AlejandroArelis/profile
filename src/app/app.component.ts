@@ -7,9 +7,9 @@ import { JobConfiguration } from './components/jobs/jobs.component';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  contactList:ItemListConfiguration[] = [{
+  contactList: ItemListConfiguration[] = [{
     icon: {
-      type:'material',
+      type: 'material',
       value: "mail"
     },
     value: "alejandro.arelis@outlook.com",
@@ -17,7 +17,7 @@ export class AppComponent {
     type: "mail"
   }, {
     icon: {
-      type:'material',
+      type: 'material',
       value: "call"
     },
     value: "+528713366792",
@@ -25,262 +25,262 @@ export class AppComponent {
     type: "tel"
   }, {
     icon: {
-      type:'material',
+      type: 'material',
       value: "home_pin"
     },
     text: "Torreón, Coahuila, México",
     type: "text"
   }];
 
-  schoolList:ItemListConfiguration[] = [{
+  schoolList: ItemListConfiguration[] = [{
     icon: {
-      type:'material',
+      type: 'material',
       value: "school"
     },
     text: "Ingeniería en Sistemas Computacionales",
     type: "text"
   }, {
     icon: {
-      type:'material',
+      type: 'material',
       value: "pin_drop"
     },
     text: "Instituto Tecnológico de la Laguna",
     type: "text"
   }];
 
-  programmingLanguagesList:ItemListConfiguration[] = [{
+  programmingLanguagesList: ItemListConfiguration[] = [{
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "c4.svg"
     },
     text: "C#",
     type: "text",
-    progress : {
+    progress: {
       value: 80,
       color: "bg-purple"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "javascript.svg"
     },
     text: "JavaScript",
     type: "text",
-    progress : {
+    progress: {
       value: 90,
       color: "bg-warning"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "typescript.svg"
     },
     text: "TypeScript",
     type: "text",
-    progress : {
+    progress: {
       value: 90,
       color: "bg-primary"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "python.svg"
     },
     text: "Python",
     type: "text",
-    progress : {
+    progress: {
       value: 70,
       color: "bg-warning"
     }
   }];
 
-  designList:ItemListConfiguration[] = [{
+  designList: ItemListConfiguration[] = [{
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "angular-material.svg"
     },
     text: "Angular Material",
     type: "text",
-    progress : {
+    progress: {
       value: 95,
       color: "bg-orange"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "bootstrap.svg"
     },
     text: "Bootstrap",
     type: "text",
-    progress : {
+    progress: {
       value: 100,
       color: "bg-indigo"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "css.svg"
     },
     text: "CSS",
     type: "text",
-    progress : {
+    progress: {
       value: 85,
       color: "bg-info"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "html.svg"
     },
     text: "HTML",
     type: "text",
-    progress : {
+    progress: {
       value: 100,
       color: "bg-danger"
     }
   }];
 
-  frontendList:ItemListConfiguration[] = [{
+  frontendList: ItemListConfiguration[] = [{
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "angular.svg"
     },
     text: "Angular",
     type: "text",
-    progress : {
+    progress: {
       value: 100,
       color: "bg-danger"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "redux.svg"
     },
     text: "Redux",
     type: "text",
-    progress : {
+    progress: {
       value: 80,
       color: "bg-purple"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "rxjs.svg"
     },
     text: "RxJS",
     type: "text",
-    progress : {
+    progress: {
       value: 85,
       color: "bg-pink"
     }
   }];
 
-  backendList:ItemListConfiguration[] = [{
+  backendList: ItemListConfiguration[] = [{
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "aspnetcore.svg"
     },
     text: "ASP.Net Core",
     type: "text",
-    progress : {
+    progress: {
       value: 80,
       color: "bg-purple"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "nodejs.svg"
     },
     text: "Node.js",
     type: "text",
-    progress : {
+    progress: {
       value: 90,
       color: "bg-success"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "expressjs.svg"
     },
     text: "Express.js",
     type: "text",
-    progress : {
+    progress: {
       value: 90,
       color: "bg-dark"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "mongoosejs.svg"
     },
     text: "Mongoose.js",
     type: "text",
-    progress : {
+    progress: {
       value: 100,
       color: "bg-danger"
     }
   }];
 
-  otherList:ItemListConfiguration[] = [{
+  otherList: ItemListConfiguration[] = [{
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "docker.svg"
     },
     text: "Docker",
     type: "text",
-    progress : {
+    progress: {
       value: 80,
       color: "bg-primary"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "git.svg"
     },
     text: "Git",
     type: "text",
-    progress : {
+    progress: {
       value: 90,
       color: "bg-danger"
     }
   }];
 
-  dbList:ItemListConfiguration[] = [{
+  dbList: ItemListConfiguration[] = [{
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "mongodb.svg"
     },
     text: "MongoDB",
     type: "text",
-    progress : {
+    progress: {
       value: 100,
       color: "bg-success"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "mysql.svg"
     },
     text: "MySql",
     type: "text",
-    progress : {
+    progress: {
       value: 90,
       color: "bg-primary"
     }
   }, {
     icon: {
-      type:'svg',
+      type: 'svg',
       value: "sqlserver.svg"
     },
     text: "Sql Server",
     type: "text",
-    progress : {
+    progress: {
       value: 95,
       color: "bg-danger"
     }
   }];
 
-  jobsList:JobConfiguration[] = [{
+  jobsList: JobConfiguration[] = [{
     title: "Desarrollador Full Stack",
     company: "Corus Consulting",
     location: "Delegación Benito Juárez de CDMX",
@@ -343,5 +343,29 @@ export class AppComponent {
       title: "Acarreo y enjaule",
       description: "Inicié la primera parte del proyecto para el control y seguimiento de viajes de pollo vivo, proporcionando una funcionalidad que permitía la visualización en dispositivos móviles."
     }]
+  }];
+
+  languagesList: ItemListConfiguration[] = [{
+    icon: {
+      type: 'svg',
+      value: "english.svg"
+    },
+    text: "Inglés",
+    type: "text",
+    progress: {
+      value: 70,
+      color: "bg-primary"
+    }
+  }, {
+    icon: {
+      type: 'svg',
+      value: "nihongo.svg"
+    },
+    text: "Japonés",
+    type: "text",
+    progress: {
+      value: 10,
+      color: "bg-danger"
+    }
   }];
 }

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { ItemListConfiguration } from './components/item-list/item-list.component';
-import { JobConfiguration } from './components/jobs/jobs.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet],
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  
+  title = 'Profile';
 }

@@ -1,4 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { CopyComponent } from '../copy/copy.component';
 
 export interface ItemListConfiguration {
   icon?: {
@@ -18,7 +21,8 @@ export interface ItemListConfiguration {
 @Component({
   selector: 'item-list',
   templateUrl: './item-list.component.html',
-  styles: [],
+  standalone: true,
+  imports: [CommonModule, MatIconModule, CopyComponent]
 })
 export class ItemListComponent implements OnInit {
   @Input() configuration: ItemListConfiguration;

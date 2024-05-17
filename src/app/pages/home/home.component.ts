@@ -1,17 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ItemListConfiguration } from 'src/app/components/item-list/item-list.component';
-import { ItemListModule } from 'src/app/components/item-list/item-list.module';
-import { JobConfiguration } from 'src/app/components/jobs/jobs.component';
-import { JobsModule } from 'src/app/components/jobs/jobs.module';
+import { ItemListComponent, ItemListConfiguration } from '../../components/item-list/item-list.component';
+import { JobConfiguration, JobsComponent } from '../../components/jobs/jobs.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
-  imports: [ItemListModule, JobsModule, CommonModule]
+  imports: [CommonModule, ItemListComponent, JobsComponent]
 })
-export class HomeComponent {
+export default class HomeComponent {
   contactList: ItemListConfiguration[] = [{
     icon: {
       type: 'material',

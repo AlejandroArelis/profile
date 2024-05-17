@@ -1,10 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'copy',
   templateUrl: './copy.component.html',
-  styles: [],
+  standalone: true,
+  imports: [CommonModule, MatIconModule]
 })
 export class CopyComponent {
   @Input() value: string = '';

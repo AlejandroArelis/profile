@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 export interface JobConfiguration {
@@ -16,7 +17,8 @@ interface Proyect {
 @Component({
   selector: 'jobs',
   templateUrl: './jobs.component.html',
-  styles: [],
+  standalone: true,
+  imports: [CommonModule, ]
 })
 export class JobsComponent {
   @Input() configuration!: JobConfiguration;

@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<!-- <navbar></navbar> -->
+
+<div class="container rounded pb-5" style="padding-top: 100px;">
+  
+  
+  
+  
+  @if (!loginDisplay) {
+    <button (click)="loginRedirect()">Login using Redirect</button>
+  }
+  
+  @if (loginDisplay) {
+    <button (click)="logout()">Logout using Redirect</button>
+    <button (click)="get()">profilet</button>
+    }
+
+  <router-outlet></router-outlet>
+</div>

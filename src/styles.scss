@@ -1,7 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-// @import "node_modules/bootstrap/scss/bootstrap";
-// @import "~bootstrap/scss/variables";
-// @import "~bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootstrap/scss/variables";
 
@@ -12,7 +8,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   @extend .text-light;
 
-  animation: moverDerechaIzquierda 2s linear infinite;
+  animation: moverDerechaIzquierda 10s linear infinite;
   background-color:$gray-900;
   background-image: linear-gradient(30deg, $gray-800 12%, transparent 12.5%, transparent 87%, $gray-800 87.5%, $gray-800),
   linear-gradient(150deg, $gray-800 12%, transparent 12.5%, transparent 87%, $gray-800 87.5%, $gray-800),

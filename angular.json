@@ -35,7 +35,8 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "bootstrap/dist/js/bootstrap.bundle.min.js"
+              "bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/fontawesome/all.min.js"
             ],
             "server": "src/main.server.ts",
             "prerender": true,
@@ -107,5 +108,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

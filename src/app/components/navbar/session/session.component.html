@@ -1,0 +1,21 @@
+@if (!loginDisplay) {
+  <li class="nav-item">
+    <a class="nav-link pointer" (click)="login()">
+      <img src="assets/icons/login.svg" alt="">
+       Iniciar sesión
+    </a>
+  </li>
+} @else if(profile) {
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+      {{profile.displayName}}
+    </a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Modificar</a></li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li><a class="dropdown-item" href="#" (click)="logout()">Salir</a></li>
+    </ul>
+  </li>
+}

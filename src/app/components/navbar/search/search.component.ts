@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'navbar',
-  templateUrl: './navbar.component.html',
+  selector: 'search',
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule],
+  templateUrl: './search.component.html'
 })
-export class NavbarComponent {
+export class SearchComponent {
 
 }

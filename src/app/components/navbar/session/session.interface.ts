@@ -1,4 +1,4 @@
-export interface Profile {
+export interface Session {
   id: string;
   displayName: string;
   givenName: string;

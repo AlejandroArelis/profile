@@ -5,7 +5,7 @@ import { MSAL_GUARD_CONFIG, MsalBroadcastService, MsalGuardConfiguration, MsalSe
 import { AuthenticationResult, EventMessage, EventType, InteractionStatus, PopupRequest, RedirectRequest } from '@azure/msal-browser';
 import { environment } from '@environments/environment.defaults';
 import { Subject, filter, takeUntil } from 'rxjs';
-import { Profile } from './profile.interface';
+import { Session } from './session.interface';
 
 @Component({
   selector: 'session',
@@ -14,7 +14,7 @@ import { Profile } from './profile.interface';
   templateUrl: './session.component.html'
 })
 export class SessionComponent implements OnDestroy, OnInit {
-  profile!:Profile;
+  session!: Session;
 
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
@@ -65,7 +65,7 @@ export class SessionComponent implements OnDestroy, OnInit {
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
 
-    if(this.loginDisplay) {
+    if (this.loginDisplay) {
       this.get();
     }
   }
@@ -110,8 +110,8 @@ export class SessionComponent implements OnDestroy, OnInit {
 
   get() {
     this._http.get(environment.apiConfig.uri)
-      .subscribe((profile:any) => {
-        this.profile = profile;
+      .subscribe((session: any) => {
+        this.session = session;
       });
 
   }

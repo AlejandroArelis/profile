@@ -4,7 +4,7 @@ import ErrorComponent from './pages/error/error.component';
 export const routes: Routes = [
   {
     path: "",
-    loadComponent: () => import("./pages/home/home.component")
+    loadComponent: () => import("./pages/profile/profile.component")
   },
   {
     path: "example",

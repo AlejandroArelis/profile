@@ -2,16 +2,16 @@
   <div class="blur">
     <div class="row">
       <div class="col-6">
-        <h1 class="text-center">{{configuration.title}}</h1>
+        <h1 class="text-center">{{job.title}}</h1>
       </div> 
       <div class="col-6">
-        <h4>{{configuration.company}}</h4>
-        <h6>{{configuration.location}} {{configuration.dates}}</h6>
+        <h4>{{job.company}}</h4>
+        <h6>{{job.location}} de {{job.start_date }} a {{job.end_date}}</h6>
       </div>
     </div> 
     <hr>
 
-    <ng-container *ngFor="let item of configuration.proyects">
+    <ng-container *ngFor="let item of job.proyects">
       <h3 class="fw-bold mt-1">{{item.title}}</h3>
       <p>{{item.description}}</p> 
     </ng-container>

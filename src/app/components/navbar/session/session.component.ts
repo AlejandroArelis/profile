@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MSAL_GUARD_CONFIG, MsalBroadcastService, MsalGuardConfiguration, MsalService } from '@azure/msal-angular';
 import { AuthenticationResult, EventMessage, EventType, InteractionStatus, PopupRequest, RedirectRequest } from '@azure/msal-browser';
-import { environment } from '@environments/environment.defaults';
-import { Subject, filter, takeUntil } from 'rxjs';
-import { Session } from './session.interface';
+import { Subject, filter, firstValueFrom, takeUntil } from 'rxjs';
+import { Profile } from '../../../pages/profile/profile.interface';
+import { ProfileService } from '../../../pages/profile/profile.service';
+import { SessionService } from './session.service';
 
 @Component({
   selector: 'session',
@@ -14,7 +14,7 @@ import { Session } from './session.interface';
   templateUrl: './session.component.html'
 })
 export class SessionComponent implements OnDestroy, OnInit {
-  session!: Session;
+  profile!: Profile;
 
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
@@ -23,7 +23,8 @@ export class SessionComponent implements OnDestroy, OnInit {
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
-    private _http: HttpClient
+    private _profileService: ProfileService,
+    private _sessionService: SessionService
   ) { }
 
   ngOnInit(): void {
@@ -108,12 +109,9 @@ export class SessionComponent implements OnDestroy, OnInit {
     }
   }
 
-  get() {
-    this._http.get(environment.apiConfig.uri)
-      .subscribe((session: any) => {
-        this.session = session;
-      });
-
+  async get() {
+    this._sessionService.session.next(await firstValueFrom(this._sessionService.get()));
+    this.profile = await firstValueFrom(this._profileService.getProfile());
   }
 
   logout(popup?: boolean) {

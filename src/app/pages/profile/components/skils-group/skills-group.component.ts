@@ -11,5 +11,5 @@ import { SkillsGroup } from './skills-group.interface';
   templateUrl: './skills-group.component.html'
 })
 export class SkillsGroupComponent {
-  @Input() skillsGroup!: SkillsGroup;
+  @Input() skillsGroup!: SkillsGroup | undefined;
 }

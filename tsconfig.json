@@ -3,10 +3,13 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@components/*":["./src/app/shared/components/*"],
-      "@models/*": ["./src/app/shared/models/*"],
-      "@services/*": ["./src/app/shared/services/*"],
-      "@directives/*": ["./src/app/shared/directives/*"],
+      "@components/*":["./src/app/components/*"],
+      "@models/*": ["./src/app/models/*"],
+      "@interfaces/*": ["./src/app/interfaces/*"],
+      "@services/*": ["./src/app/services/*"],
+      "@pipes/*": ["./src/app/pipes/*"],
+      "@pages/*": ["./src/app/pages/*"],
+      "@directives/*": ["./src/app/directives/*"],
       "@environments/*": ["./src/environments/*"],
     },
     "outDir": "./dist/out-tsc",

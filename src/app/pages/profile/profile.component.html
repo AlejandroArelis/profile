@@ -1,53 +1,57 @@
-<div class="row g-3">
-  <div class="col-12 col-md-6 col-lg-4 col-xl-2">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-      <div class="blur rounded-circle overflow-hidden">
-        <img class="w-100 rounded-circle" src="https://avatars.githubusercontent.com/u/68308333?v=4" alt="Profile">
-      </div>
-    </div>
-  </div>
-  <div class="col-12 col-md-6 col-lg-8 col-xl-10">
-    <div class="row g-3">
-      <div class="col-12">
-        <div class="blur h-100">
-          <h1 class="text-center mt-2 fs-2">{{profile.name}}</h1>
-          <h2 class="text-center">{{profile.job}}</h2>
+@if (profile) {
+  <div class="row g-3">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-2">
+      <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="blur rounded-circle overflow-hidden">
+          <img class="w-100 rounded-circle" src="https://avatars.githubusercontent.com/u/68308333?v=4" alt="Profile">
         </div>
       </div>
-      <div class="col-12 col-lg-6">
-        <skills-group [skillsGroup]="profile.contact"></skills-group>
-      </div>
-      <div class="col-12 col-lg-6">
-        <skills-group [skillsGroup]="profile.school"></skills-group>
-      </div>
     </div>
-  </div>
-</div>
-
-<div class="row g-3 mt-1">
-  <div class="col-12 col-lg-4">
-    <div class="row g-3">
-
-      @for (skillsGroup of profile.skills_groups; track $index) {
-        <div class="col-12 col-md-6 col-lg-12">
-          <skills-group [skillsGroup]="skillsGroup"></skills-group>
+    <div class="col-12 col-md-6 col-lg-8 col-xl-10">
+      <div class="row g-3">
+        <div class="col-12">
+          <div class="blur h-100">
+            <h1 class="text-center mt-2 fs-2">{{profile.name}}</h1>
+            <h2 class="text-center">{{profile.job}}</h2>
+          </div>
         </div>
-      }
-
-    </div>
-  </div>
-
-  <div class="col-12 col-lg-8">
-    <div class="row g-3">
-      <div class="col-12">
-        <div class="blur">
-          <h1 class="text-center">Experiencia laboral</h1>
+        <div class="col-12 col-lg-6">
+          <skills-group [skillsGroup]="profile.contact"></skills-group>
+        </div>
+        <div class="col-12 col-lg-6">
+          <skills-group [skillsGroup]="profile.school"></skills-group>
         </div>
       </div>
-
-      @for (job of profile.jobs; track $index) {
-        <job [job]="job"></job>
-      }
     </div>
   </div>
-</div>
+  
+  <div class="row g-3 mt-1">
+    <div class="col-12 col-lg-4">
+      <div class="row g-3">
+  
+        @for (skillsGroup of profile.skills_groups; track $index) {
+          <div class="col-12 col-md-6 col-lg-12">
+            <skills-group [skillsGroup]="skillsGroup"></skills-group>
+          </div>
+        }
+  
+      </div>
+    </div>
+  
+    <div class="col-12 col-lg-8">
+      <div class="row g-3">
+        <div class="col-12">
+          <div class="blur">
+            <h1 class="text-center">Experiencia laboral</h1>
+          </div>
+        </div>
+  
+        @for (job of profile.jobs; track $index) {
+          <job [job]="job"></job>
+        }
+      </div>
+    </div>
+  </div>
+} @else {
+  <h1>No encuentro tu perfil</h1>
+}

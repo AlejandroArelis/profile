@@ -3,14 +3,16 @@ import { Skill } from "../../interfaces/skill.interface";
 import { SkillsGroup } from "./components/skils-group/skills-group.interface";
 
 export interface Profile {
+  id: string;
   name: string;
-  job: string;
+  job?: string;
   email: string;
-  phone: string;
-  city: string;
+  phone?: string;
+  city?: string;
+  degree?: string;
+  school?: string;
   azure_id: string;
-  contact?: SkillsGroup;
-  school?: SkillsGroup;
+  user_name?: string;
   jobs?: Job[];
   skills_groups?: SkillsGroup[];
 }

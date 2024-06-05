@@ -18,12 +18,18 @@ export class ProfileService {
     private _sessionService: SessionService
   ) { }
 
-  getProfile(): Observable<Profile> {
-    return this._sessionService.session$.pipe(
-      switchMap((session: Session) => {
-        return this._http.post<Profile>(`${this.api}`, { azure_id: session.id, name: session.displayName, email: session.mail });
-      })
-    );
+  getProfile(session: Session): Observable<Profile> {
+    return this._http.post<Profile>(`${this.api}`, { azure_id: session.id, name: session.displayName, email: session.mail });
+  }
+
+  getProfileByUsername(username: string): Observable<Profile> {
+    return this._http.get<Profile>(`${this.api}/${username}`);
+  }
+
+  save(profile: Profile): Observable<Profile> {
+    const {id, ...body} = profile;
+
+    return this._http.put<Profile>(`${this.api}/${id}`, body);
   }
 
   // got(): Profile {

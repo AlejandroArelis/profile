@@ -6,6 +6,7 @@ import { Subject, filter, firstValueFrom, takeUntil } from 'rxjs';
 import { Profile } from '../../../pages/profile/profile.interface';
 import { ProfileService } from '../../../pages/profile/profile.service';
 import { SessionService } from './session.service';
+import { Session } from './session.interface';
 
 @Component({
   selector: 'session',
@@ -14,7 +15,7 @@ import { SessionService } from './session.service';
   templateUrl: './session.component.html'
 })
 export class SessionComponent implements OnDestroy, OnInit {
-  profile!: Profile;
+  session!: Session;
 
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
@@ -110,8 +111,8 @@ export class SessionComponent implements OnDestroy, OnInit {
   }
 
   async get() {
-    this._sessionService.session.next(await firstValueFrom(this._sessionService.get()));
-    this.profile = await firstValueFrom(this._profileService.getProfile());
+    this.session = await firstValueFrom(this._sessionService.get());
+    this._sessionService.session.next(this.session);
   }
 
   logout(popup?: boolean) {

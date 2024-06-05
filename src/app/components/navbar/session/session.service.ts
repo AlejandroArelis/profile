@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment as def } from '@environments/environment.defaults';
-import { environment as dev } from '@environments/environment';
-import { Observable, Subject, firstValueFrom } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Session } from './session.interface';
-import { Profile } from '../../../pages/profile/profile.interface';
 
 @Injectable({
   providedIn: 'root'

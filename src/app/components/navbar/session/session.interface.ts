@@ -1,5 +1,5 @@
 export interface Session {
-  id: string;
+  id?: string;
   displayName: string;
   mail: string;
 }

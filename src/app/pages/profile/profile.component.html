@@ -1,5 +1,23 @@
+@if (owner) {
+  <div class="blur mb-3">
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-secondary btn-sm" (click)="editing = !editing;">
+        @if (editing) {
+          <em class="fa-solid fa-xmark"></em> Cerrar el editor
+        } @else {
+          <em class="fa-solid fa-pen"></em> Modificar
+        }
+      </button>
+
+      <button class="btn btn-success btn-sm" (click)="save()">
+        <em class="fa-solid fa-cloud-arrow-up"></em> Guardar
+      </button>
+    </div>
+  </div>
+}
+
 @if (profile) {
-  <div class="row g-3">
+  <div class="row g-3" data-bs-theme="dark">
     <div class="col-12 col-md-6 col-lg-4 col-xl-2">
       <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="blur rounded-circle overflow-hidden">
@@ -12,40 +30,169 @@
         <div class="col-12">
           <div class="blur h-100">
             <h1 class="text-center mt-2 fs-2">{{profile.name}}</h1>
-            <h2 class="text-center">{{profile.job}}</h2>
+            @if (editing) {
+              <div class="form-floating mt-2">
+                <input type="text" class="form-control" id="jobInput" placeholder="" [(ngModel)]="profile.job">
+                <label for="jobInput">Puesto de trabajo</label>
+              </div>
+            } @else {
+              <h2 class="text-center">{{profile.job}}</h2>
+            }
           </div>
         </div>
         <div class="col-12 col-lg-6">
-          <skills-group [skillsGroup]="profile.contact"></skills-group>
+
+          <div class="blur h-100">
+            <h1 class="text-center">Contacto</h1>
+
+            <!-- Correo electrónico -->
+            <div class="row g-1">
+              <div class="col-auto">
+                <mat-icon>mail</mat-icon>
+              </div>
+              <div class="col-auto">
+                <a [href]="'mailto:' + profile.email">{{profile.email}}</a>
+              </div>
+              <div class="col-auto">
+                <copy [value]="profile.email"></copy>
+              </div>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="row g-1">
+              @if (editing) {
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="phoneInput" placeholder="" [(ngModel)]="profile.phone">
+                  <label for="phoneInput">Teléfono</label>
+                </div>
+              } @else {
+                <div class="col-auto">
+                  <mat-icon>phone</mat-icon>
+                </div>
+                <div class="col-auto">
+                  <a [href]="'tel:' + profile.phone">{{profile.phone ?? '' | phone}}</a>
+                </div>
+                <div class="col-auto">
+                  <copy [value]="profile.phone ?? ''"></copy>
+                </div>
+              }
+            </div>
+
+            <!-- Ciudad -->
+            <div class="row g-1">
+              @if (editing) {
+                <div class="form-floating mt-2">
+                  <input type="text" class="form-control" id="cityInput" placeholder="" [(ngModel)]="profile.city">
+                  <label for="cityInput">Ciudad</label>
+                </div>
+              } @else {
+                <div class="col-auto">
+                  <mat-icon>home_pin</mat-icon>
+                </div>
+                <div class="col-auto">
+                  <copy [value]="profile.city ?? ''" [type]="'text'"></copy>
+                </div>
+              }
+            </div>
+
+          </div>
         </div>
+
         <div class="col-12 col-lg-6">
-          <skills-group [skillsGroup]="profile.school"></skills-group>
+
+          <div class="blur h-100">
+            <h1 class="text-center">Estudios</h1>
+
+            <!-- Titulo de estudios -->
+            <div class="row g-1">
+              @if (editing) {
+                <div class="form-floating mt-2">
+                  <input type="text" class="form-control" id="degreeInput" placeholder="" [(ngModel)]="profile.degree">
+                  <label for="degreeInput">Carrera universitaria</label>
+                </div>
+              } @else {
+                <div class="col-auto">
+                  <mat-icon>school</mat-icon>
+                </div>
+                <div class="col-auto">
+                  <copy [value]="profile.degree ?? ''" [type]="'text'"></copy>
+                </div>
+              }
+            </div>
+
+            <!-- Nombre de escuela -->
+            <div class="row g-1">
+              @if (editing) {
+                <div class="form-floating mt-2">
+                  <input type="text" class="form-control" id="schoolInput" placeholder="" [(ngModel)]="profile.school">
+                  <label for="schoolInput">Universidad</label>
+                </div>
+              } @else {
+                <div class="col-auto">
+                  <mat-icon>pin_drop</mat-icon>
+                </div>
+                <div class="col-auto">
+                  <copy [value]="profile.school ?? ''" [type]="'text'"></copy>
+                </div>
+              }
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
+
   <div class="row g-3 mt-1">
     <div class="col-12 col-lg-4">
       <div class="row g-3">
-  
+
+        <div class="col-12">
+          <div class="blur">
+            <div class="row">
+              <div class="col">
+                <h1 class="text-center">Habilidades</h1>
+              </div>
+              @if (editing) {
+                <div class="col-auto">
+                  <button class="btn btn-success btn-sm">
+                    <em class="fa-solid fa-plus"></em>
+                  </button>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
         @for (skillsGroup of profile.skills_groups; track $index) {
           <div class="col-12 col-md-6 col-lg-12">
             <skills-group [skillsGroup]="skillsGroup"></skills-group>
           </div>
         }
-  
+
       </div>
     </div>
-  
+
     <div class="col-12 col-lg-8">
       <div class="row g-3">
+
         <div class="col-12">
           <div class="blur">
-            <h1 class="text-center">Experiencia laboral</h1>
+            <div class="row">
+              <div class="col">
+                <h1 class="text-center">Experiencia laboral</h1>
+              </div>
+              @if (editing) {
+                <div class="col-auto">
+                  <button class="btn btn-success btn-sm">
+                    <em class="fa-solid fa-plus"></em>
+                  </button>
+                </div>
+              }
+            </div>
           </div>
         </div>
-  
+
         @for (job of profile.jobs; track $index) {
           <job [job]="job"></job>
         }
@@ -53,5 +200,5 @@
     </div>
   </div>
 } @else {
-  <h1>No encuentro tu perfil</h1>
+  <h1 class="text-center">No encuentro el perfil</h1>
 }

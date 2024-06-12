@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { SkillComponent } from './components/skill/skill.component';
-import { Skill } from '../../../../interfaces/skill.interface';
-import { SkillsGroup } from './skills-group.interface';
+import { SkillsGroup } from '@pages/skill-groups/skills-group.interface';
 
 @Component({
   selector: 'skills-group',

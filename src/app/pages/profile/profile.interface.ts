@@ -1,6 +1,5 @@
-import { Job } from "../../interfaces/job.interface";
-import { Skill } from "../../interfaces/skill.interface";
-import { SkillsGroup } from "./components/skils-group/skills-group.interface";
+import { SkillsGroup } from "@pages/skill-groups/skills-group.interface";
+import { Job } from "./components/job/job.interface";
 
 export interface Profile {
   id: string;

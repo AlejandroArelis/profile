@@ -4,12 +4,12 @@
     <img *ngIf="skill.icon.type === 'svg'" [src]="'/assets/icons/' + skill.icon.value" style="width: 15px;">
   </div>
   <div [ngClass]="{'col-auto': !skill.progress, 'col-4': skill.progress}">
-    <a *ngIf="skill.type !== 'text'" [href]="skill.href">{{skill.text}}</a>
-    <copy *ngIf="skill.type === 'text'" [value]="skill.text" [type]="'text'"></copy>
+    <!-- <a *ngIf="skill.type !== 'text'" [href]="skill.href">{{skill.text}}</a>
+    <copy *ngIf="skill.type === 'text'" [value]="skill.text" [type]="'text'"></copy> -->
   </div>
-  <div class="col-auto" *ngIf="skill.type !== 'text'">
+  <!-- <div class="col-auto" *ngIf="skill.type !== 'text'">
     <copy [value]="skill.value!"></copy>
-  </div>
+  </div> -->
   <div class="col" *ngIf="skill.progress">
     <div class="progress" role="progressbar" *ngIf="skill.progress">
       <div class="progress-bar progress-bar-striped progress-bar-animated" [ngClass]="skill.progress.color" [ngStyle]="{'width': skill.progress.value + '%'}"></div>

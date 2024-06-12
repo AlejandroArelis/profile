@@ -8,14 +8,18 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi
 import { MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalBroadcastService, MsalGuard, MsalGuardConfiguration, MsalInterceptor, MsalInterceptorConfiguration, MsalModule, MsalService } from '@azure/msal-angular';
 import { BrowserCacheLocation, IPublicClientApplication, InteractionType, LogLevel, PublicClientApplication } from '@azure/msal-browser';
 import { environment } from '@environments/environment.defaults';
+import { ToastrModule, provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withComponentInputBinding(), withViewTransitions(), withHashLocation()),
     provideClientHydration(),
     provideAnimationsAsync(),
+    provideToastr(),
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
-    importProvidersFrom(), // Importaciones normales
+    importProvidersFrom(
+      // ToastrModule.forRoot()
+    ), // Importaciones normales
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MsalInterceptor,

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CopyComponent } from '../../../../../../components/copy/copy.component';
-import { Skill } from '../../../../../../interfaces/skill.interface';
+import { Skill } from './skill.interface';
 
 @Component({
   selector: 'skill',
@@ -15,23 +15,9 @@ export class SkillComponent implements OnInit {
 
   constructor() {
     this.skill = {
-      text: '',
-      type: '',
+      text: ''
     };
   }
 
-  ngOnInit(): void {
-    if(!this.skill.href && this.skill.type !== 'text') {
-      switch (this.skill.type) {
-        case 'tel': {
-          this.skill.href = `tel:${this.skill.value}`;
-          break;
-        }
-        case 'mail': {
-          this.skill.href = `mailto:${this.skill.value}`;
-          break;
-        }
-      }
-    }
-  }
+  ngOnInit(): void { }
 }

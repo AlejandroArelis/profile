@@ -3,15 +3,15 @@ import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MSAL_GUARD_CONFIG, MsalBroadcastService, MsalGuardConfiguration, MsalService } from '@azure/msal-angular';
 import { AuthenticationResult, EventMessage, EventType, InteractionStatus, PopupRequest, RedirectRequest } from '@azure/msal-browser';
 import { Subject, filter, firstValueFrom, takeUntil } from 'rxjs';
-import { Profile } from '../../../pages/profile/profile.interface';
 import { ProfileService } from '../../../pages/profile/profile.service';
 import { SessionService } from './session.service';
 import { Session } from './session.interface';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'session',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './session.component.html'
 })
 export class SessionComponent implements OnDestroy, OnInit {

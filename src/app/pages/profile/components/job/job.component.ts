@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Job } from '../../../../interfaces/job.interface';
+import { Job } from './job.interface';
 
 @Component({
   selector: 'job',

@@ -6,8 +6,6 @@ export interface Skill {
   };
   value?: string;
   text: string;
-  type: string;
-  href?: string;
   progress?: {
     color: string;
     value: number;

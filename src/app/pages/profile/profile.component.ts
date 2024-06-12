@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { JobComponent } from './components/job/job.component';
 import { CommonModule } from '@angular/common';
-import { SkillsGroupComponent } from './components/skils-group/skills-group.component';
+import { SkillsGroupComponent } from './components/skills-group/skills-group.component';
 import { ProfileService } from './profile.service';
 import { Profile } from './profile.interface';
 import { Subscription, firstValueFrom } from 'rxjs';
-import { SkillComponent } from './components/skils-group/components/skill/skill.component';
+import { SkillComponent } from './components/skills-group/components/skill/skill.component';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { CopyComponent } from '@components/copy/copy.component';
@@ -13,6 +13,7 @@ import { PhonePipe } from '@pipes/phone.pipe';
 import { SessionService } from '@components/navbar/session/session.service';
 import { Session } from '@components/navbar/session/session.interface';
 import { FormsModule } from '@angular/forms';
+import { SkillsGroup } from '@pages/skill-groups/skills-group.interface';
 
 @Component({
   selector: 'app-profile',
@@ -37,6 +38,7 @@ export default class ProfileComponent implements OnInit, OnDestroy {
   editing = false;
   session!: Session;
   sessionSubs = new Subscription();
+  newSkillGroup!: SkillsGroup;
 
   constructor(
     private _profileService: ProfileService,
@@ -53,9 +55,9 @@ export default class ProfileComponent implements OnInit, OnDestroy {
 
           const user_name = params["user_name"];
 
-          if(user_name) {
+          if (user_name) {
             console.log("jejejejejeje", user_name);
-          } else if(this.session) {
+          } else if (this.session) {
             this.profile = await firstValueFrom(this._profileService.getProfile(this.session));
             this.owner = true;
           }
@@ -79,9 +81,13 @@ export default class ProfileComponent implements OnInit, OnDestroy {
     try {
       this.profile = await firstValueFrom(this._profileService.save(this.profile));
       this.editing = false;
-    } catch(e) {
+    } catch (e) {
       console.error(e);
     }
+  }
+
+  addSkillGroup() {
+    // this.newSkillGroup 
   }
 
   ngOnDestroy(): void {

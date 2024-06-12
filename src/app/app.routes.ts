@@ -19,6 +19,14 @@ export const routes: Routes = [
     loadComponent: () => import("./pages/error/error.component")
   },
   {
+    path: 'skill-groups',
+    loadComponent: () => import("./pages/skill-groups/skill-groups.component")
+  },
+  {
+    path: 'skills/:skill_group_id',
+    loadComponent: () => import("./pages/skills/skills.component")
+  },
+  {
     path: "**",
     loadComponent: () => import("./pages/error/error.component")
   }

@@ -4,7 +4,7 @@ import { NewComponent } from './components/new/new.component';
 import { CommonModule } from '@angular/common';
 import { Subscription, firstValueFrom } from 'rxjs';
 import { SkillGroupsService } from './skill-groups.service';
-import { SkillsGroup } from './skills-group.interface';
+import { SkillGroup } from './skills-group.interface';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ import { RouterLink } from '@angular/router';
 })
 export default class GroupsSkillsComponent implements OnInit, OnDestroy {
 
-  skillsGroups: SkillsGroup[] = [];
+  skillsGroups: SkillGroup[] = [];
   skillsGroupsSubs = new Subscription();
 
   constructor(
@@ -30,18 +30,18 @@ export default class GroupsSkillsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.skillsGroupsSubs = this._service.get().subscribe((response: SkillsGroup[]) => {
+    this.skillsGroupsSubs = this._service.get().subscribe((response: SkillGroup[]) => {
       this.skillsGroups = response;
     });
   }
 
-  newSkillGroup(item?: SkillsGroup): void {
+  newSkillGroup(item?: SkillGroup): void {
     const dialog = this._dialog.open(NewComponent, {
       width: '50%',
       data: item
     });
 
-    dialog.afterClosed().subscribe((response: SkillsGroup) => {
+    dialog.afterClosed().subscribe((response: SkillGroup) => {
 
       if (response) {
         this.skillsGroups.push(response);

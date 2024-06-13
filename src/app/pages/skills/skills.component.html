@@ -1,19 +1,49 @@
-<div data-bs-theme="dark">
-  <div class="row blur">
-    <div class="col-auto ps-0">
-      <button class="btn btn-warning btn-sm" routerLink="/skill-groups">
-        <em class="fa-solid fa-chevron-left"></em> Grupos de habilidades
-      </button>
-    </div>
-    <div class="col ps-0">
-      @if (skillGroup.name) {
+@if (ready) {
+  <div data-bs-theme="dark">
+    <div class="row blur">
+      <div class="col-auto ps-0">
+        <button class="btn btn-warning btn-sm" routerLink="/skill-groups">
+          <em class="fa-solid fa-chevron-left"></em> Grupos de habilidades
+        </button>
+      </div>
+      <div class="col ps-0">
         <h1 class="text-center">Habilidades de {{skillGroup.name}}</h1>
-      }
+      </div>
+      <div class="col-auto pe-0">
+        <button class="btn btn-success btn-sm" (click)="newSkillGroup({skill_group: skillGroup.id})">
+          <em class="fa-solid fa-plus"></em>
+        </button>
+      </div>
     </div>
-    <div class="col-auto pe-0">
-      <button class="btn btn-success btn-sm" (click)="newSkillGroup()">
-        <em class="fa-solid fa-plus"></em>
-      </button>
+  
+    <div class="row blur mt-2">
+      <table class="table table-sm blur m-0">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th style="width: 75px;"></th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          @for (item of skillGroup.skills; track item.id; let i = $index) {
+            <tr>
+              <td>{{item.name}}</td>
+              <td>
+                @if (item.id) {
+    
+                  <button class="btn btn-sm btn-primary me-1" (click)="newSkillGroup(item)">
+                    <em class="fa-solid fa-pen"></em>
+                  </button>
+    
+                  <button class="btn btn-sm btn-danger" (click)="delete(item.id, i)">
+                    <em class="fa-solid fa-trash"></em>
+                  </button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
+}

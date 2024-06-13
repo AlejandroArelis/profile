@@ -1,4 +1,4 @@
-import { SkillsGroup } from "@pages/skill-groups/skills-group.interface";
+import { SkillGroup } from "@pages/skill-groups/skills-group.interface";
 import { Job } from "./components/job/job.interface";
 
 export interface Profile {
@@ -13,5 +13,5 @@ export interface Profile {
   azure_id: string;
   user_name?: string;
   jobs?: Job[];
-  skills_groups?: SkillsGroup[];
+  skills_groups?: SkillGroup[];
 }

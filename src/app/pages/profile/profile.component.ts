@@ -13,7 +13,7 @@ import { PhonePipe } from '@pipes/phone.pipe';
 import { SessionService } from '@components/navbar/session/session.service';
 import { Session } from '@components/navbar/session/session.interface';
 import { FormsModule } from '@angular/forms';
-import { SkillsGroup } from '@pages/skill-groups/skills-group.interface';
+import { SkillGroup } from '@pages/skill-groups/skills-group.interface';
 
 @Component({
   selector: 'app-profile',
@@ -38,7 +38,7 @@ export default class ProfileComponent implements OnInit, OnDestroy {
   editing = false;
   session!: Session;
   sessionSubs = new Subscription();
-  newSkillGroup!: SkillsGroup;
+  newSkillGroup!: SkillGroup;
 
   constructor(
     private _profileService: ProfileService,

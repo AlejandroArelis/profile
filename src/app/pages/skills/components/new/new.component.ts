@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Skill } from '@pages/profile/components/skills-group/components/skill/skill.interface';
 import { SkillsService } from '@pages/skills/skills.service';
 import { ToastrService } from 'ngx-toastr';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-new',
@@ -29,15 +30,16 @@ export class NewComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: Skill,
   ) {
     this.form = this._formBuilder.group({
-      name: ["", [Validators.required]]
+      name: ["", [Validators.required]],
+      skill_group: ["", [Validators.required]]
     });
   }
-
+  
   ngOnInit(): void {
-    if(this.data) {
+    if(this.data.name) {
       this.editing = true;
-      this.form.patchValue(this.data);
     }
+    this.form.patchValue(this.data);
   }
   
   close(skill?: Skill) {
@@ -48,9 +50,9 @@ export class NewComponent implements OnInit {
     try {
       let response;
       if(this.editing) {
-        // response = await firstValueFrom(this._service.update(this.form.value));
+        response = await firstValueFrom(this._service.update(this.form.value));
       } else {
-        // response = await firstValueFrom(this._service.new(this.form.value));
+        response = await firstValueFrom(this._service.new(this.form.value));
       }
       this.close(response);
     } catch (e:any) {

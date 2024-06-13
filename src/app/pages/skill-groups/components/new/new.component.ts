@@ -3,7 +3,7 @@ import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angula
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SkillGroupsService } from '@pages/skill-groups/skill-groups.service';
-import { SkillsGroup } from '@pages/skill-groups/skills-group.interface';
+import { SkillGroup } from '@pages/skill-groups/skills-group.interface';
 import { ToastrService } from 'ngx-toastr';
 import { firstValueFrom } from 'rxjs';
 
@@ -27,7 +27,7 @@ export class NewComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _service: SkillGroupsService,
     private _toast: ToastrService,
-    @Inject(MAT_DIALOG_DATA) public data: SkillsGroup,
+    @Inject(MAT_DIALOG_DATA) public data: SkillGroup,
   ) {
     this.form = this._formBuilder.group({
       name: ["", [Validators.required]]
@@ -41,7 +41,7 @@ export class NewComponent implements OnInit {
     }
   }
 
-  close(skillsGroup?: SkillsGroup) {
+  close(skillsGroup?: SkillGroup) {
     this._dialogRef.close(skillsGroup);
   }
 
@@ -53,7 +53,6 @@ export class NewComponent implements OnInit {
       } else {
         response = await firstValueFrom(this._service.new(this.form.value));
       }
-      console.log({ submit: response });
       this.close(response);
     } catch (e:any) {
       console.error(e);

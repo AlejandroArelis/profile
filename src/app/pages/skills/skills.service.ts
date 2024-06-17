@@ -21,9 +21,8 @@ export class SkillsService {
     return this._http.post<Skill>(this.apiUrl, body);
   }
 
-  update(skillsGroup: Skill): Observable<Skill> {
-    const { id, ...body } = skillsGroup;
-    return this._http.put<Skill>(`${this.apiUrl}/${id}`, body);
+  update(skill: Skill): Observable<Skill> {
+    return this._http.put<Skill>(`${this.apiUrl}/${skill.id}`, skill);
   }
 
   delete(id: string): Observable<string> {

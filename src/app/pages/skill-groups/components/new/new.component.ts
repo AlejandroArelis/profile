@@ -30,6 +30,7 @@ export class NewComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: SkillGroup,
   ) {
     this.form = this._formBuilder.group({
+      id: "",
       name: ["", [Validators.required]]
     });
   }

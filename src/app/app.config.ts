@@ -7,7 +7,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalBroadcastService, MsalGuard, MsalGuardConfiguration, MsalInterceptor, MsalInterceptorConfiguration, MsalModule, MsalService } from '@azure/msal-angular';
 import { BrowserCacheLocation, IPublicClientApplication, InteractionType, LogLevel, PublicClientApplication } from '@azure/msal-browser';
-import { environment } from '@environments/environment.defaults';
+import { environment as def } from '@environments/environment.defaults';
+import { environment as dev } from '@environments/environment';
 import { ToastrModule, provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
@@ -50,9 +51,9 @@ export function loggerCallback(logLevel: LogLevel, message: string) {
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
-      clientId: environment.msalConfig.auth.clientId,
-      authority: environment.msalConfig.auth.authority,
-      redirectUri: 'http://localhost:4200',
+      clientId: def.msalConfig.auth.clientId,
+      authority: def.msalConfig.auth.authority,
+      redirectUri: dev.MSAL_REDIRECT_URI,
       postLogoutRedirectUri: '/'
     },
     cache: {
@@ -71,7 +72,7 @@ export function MSALInstanceFactory(): IPublicClientApplication {
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
-  protectedResourceMap.set(environment.apiConfig.uri, environment.apiConfig.scopes);
+  protectedResourceMap.set(def.apiConfig.uri, def.apiConfig.scopes);
 
   return {
     interactionType: InteractionType.Redirect,
@@ -83,7 +84,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   return { 
     interactionType: InteractionType.Redirect,
     authRequest: {
-      scopes: [...environment.apiConfig.scopes]
+      scopes: [...def.apiConfig.scopes]
     },
     loginFailedRoute: '/login-failed'
   };

@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --base-href ./",
-    "build:github": "del docs && npm run build",
+    "build:github": "del docs && npm run build && copyfiles dist/browser/* ./docs -f",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -34,6 +34,7 @@
     "@angular/cli": "^17.3.3",
     "@angular/compiler-cli": "^17.3.0",
     "@types/jasmine": "~5.1.0",
+    "copyfiles": "^2.4.1",
     "del-cli": "^5.1.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",

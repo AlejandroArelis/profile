@@ -50,11 +50,12 @@ export class NewComponent implements OnInit {
     try {
       let response;
       if(this.editing) {
-        response = await firstValueFrom(this._service.update(this.form.value));
+        await firstValueFrom(this._service.update(this.form.value));
+        this.close(this.form.value.name);
       } else {
         response = await firstValueFrom(this._service.new(this.form.value));
+        this.close(response);
       }
-      this.close(response);
     } catch (e:any) {
       console.error(e);
       this._toast.error(e.error.detail);

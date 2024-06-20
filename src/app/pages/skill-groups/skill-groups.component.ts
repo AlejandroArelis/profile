@@ -41,10 +41,12 @@ export default class GroupsSkillsComponent implements OnInit, OnDestroy {
       data: item
     });
 
-    dialog.afterClosed().subscribe((response: SkillGroup) => {
+    dialog.afterClosed().subscribe((response) => {
 
-      if (response) {
+      if (response.id) {
         this.skillsGroups.push(response);
+      } else if (item) {
+        item.name = response;
       }
     });
   }

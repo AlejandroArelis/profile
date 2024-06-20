@@ -56,33 +56,17 @@ export default class SkillsComponent implements OnInit, OnDestroy {
     });
   }
 
-  newSkillGroup(item: Skill, index?: number): void {
+  newSkillGroup(item: Skill): void {
     const dialog = this._dialog.open(NewComponent, {
       width: '50%',
-      data: item,
+      data: item
     });
 
-    dialog.afterClosed().subscribe((response: Skill | boolean) => {
-      // console.log({response, index, item});
-      // if (response && !index) {
-      //   this.skillGroup.skills.push(response);
-      // } else if(index && item) {
-      //   this.skillGroup.skills[index] = item;
-      // }
-      // if(index && item) {
-      //   this.skillGroup.skills[index] = item;
-      // } else {
-      //   this.skillGroup.skills.push(response);
-      // }
-      console.log({type: typeof response, index});
-      if(typeof response == "boolean" && index != undefined) {
-        console.log({pre: this.skillGroup.skills[index], post: this.skillGroup.skills[index] = item, item});
-        this.skillGroup.skills[index] = item;
-      } else if(typeof response == "object") {
-        console.log("entra2");
+    dialog.afterClosed().subscribe((response) => {
+      if (response.id) {
         this.skillGroup.skills.push(response);
-      } else {
-        console.log("entra3");
+      } else if (item) {
+        item.name = response;
       }
     });
   }

@@ -12,11 +12,10 @@ import { Skill } from './skill.interface';
 })
 export class SkillComponent implements OnInit {
   @Input() skill: Skill;
+  @Input() owner!: boolean;
 
   constructor() {
-    this.skill = {
-      text: ''
-    };
+    this.skill = {};
   }
 
   ngOnInit(): void { }

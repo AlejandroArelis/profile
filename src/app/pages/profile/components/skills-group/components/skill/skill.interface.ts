@@ -1,15 +1,8 @@
 export interface Skill {
   id?: string;
   name?: string;
-  skill_group?: string;
-  icon?: {
-    type: string;
-    value: string;
-  };
-  value?: string;
-  text?: string;
-  progress?: {
-    color: string;
-    value: number;
-  };
+  color?: string;
+  skill_group_id?: string;
+  image?: string;
+  percentage?: number;
 }

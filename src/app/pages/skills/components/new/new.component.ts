@@ -6,6 +6,7 @@ import { Skill } from '@pages/profile/components/skills-group/components/skill/s
 import { SkillsService } from '@pages/skills/skills.service';
 import { ToastrService } from 'ngx-toastr';
 import { firstValueFrom } from 'rxjs';
+import { COLORS } from './new.data';
 
 @Component({
   selector: 'app-new',
@@ -21,6 +22,7 @@ export class NewComponent implements OnInit {
   @ViewChild("nameInput") nameInput!: ElementRef;
   form!: FormGroup;
   editing = false;
+  colors: string[] = [];
 
   constructor(
     private _dialogRef: MatDialogRef<NewComponent>,
@@ -32,32 +34,40 @@ export class NewComponent implements OnInit {
     this.form = this._formBuilder.group({
       id: "",
       name: ["", [Validators.required]],
-      skill_group: ["", [Validators.required]]
+      skill_group_id: ["", [Validators.required]],
+      color: ["", [Validators.required]],
+      image: ["", [Validators.required]]
     });
   }
-  
+
   ngOnInit(): void {
-    if(this.data.name) {
+    if (this.data.name) {
       this.editing = true;
     }
     this.form.patchValue(this.data);
+
+    this.colors = COLORS;
   }
-  
+
   close(skill?: Skill) {
-    this._dialogRef.close(skill);
+    if (skill) {
+      this._dialogRef.close({ editing: this.editing, skill });
+    } else {
+      this._dialogRef.close();
+    }
   }
 
   async submit() {
     try {
       let response;
-      if(this.editing) {
+      if (this.editing) {
         await firstValueFrom(this._service.update(this.form.value));
-        this.close(this.form.value.name);
+        this.close(this.form.value);
       } else {
         response = await firstValueFrom(this._service.new(this.form.value));
         this.close(response);
       }
-    } catch (e:any) {
+    } catch (e: any) {
       console.error(e);
       this._toast.error(e.error.detail);
       this.form.reset();

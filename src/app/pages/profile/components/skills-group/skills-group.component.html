@@ -1,6 +1,6 @@
 <div class="blur h-100">
   <h1 class="text-center">{{skillsGroup?.name}}</h1>
   @for (skill of skillsGroup?.skills; track skill.id) {
-    <skill [skill]="skill"></skill>
+    <skill [skill]="skill" [owner]="owner"></skill>
   }
 </div>

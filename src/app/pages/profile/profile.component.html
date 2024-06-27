@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between">
       <button class="btn btn-secondary btn-sm" (click)="editing = !editing;">
         @if (editing) {
-          <em class="fa-solid fa-xmark"></em> Cerrar el editor
+          Cerrar el editor
         } @else {
           <em class="fa-solid fa-pen"></em> Modificar
         }
@@ -153,20 +153,46 @@
           </div>
         </div>
 
-        @if (editing) {
+        @if (owner && avalible_skills.length > 0) {
           <div class="col-12 mt-3">
             <div class="blur">
-              <div class="form-floating">
-                <input type="text" class="form-control" id="newSkillGroupInput" placeholder="" [(ngModel)]="newSkillGroup.name">
-                <label for="newSkillGroupInput">Nuevo grupo de habilidades</label>
-              </div>
+
+              <form [formGroup]="new_skill_form" (ngSubmit)="save_new_skill()">
+                <div class="row g-2">
+                  <div class="form-group">
+                    <label for="percentageRange" class="form-label">Porcentaje de dominio {{new_skill_form.value.percentage}}%</label>
+                    <input type="range" class="form-range" id="percentageRange" formControlName="percentage">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Habilidades disponibles</label>
+                    <select class="form-select" formControlName="skill_id">
+                      <option selected>Elige una habilidad</option>
+                      @for (skill of avalible_skills; track skill.id) {
+                        <option [value]="skill.id">
+                          {{skill.name}}
+                        </option>
+                      }
+                    </select>
+                  </div>
+
+                  <div class="col-6">
+                    <button type="reset" class="btn btn-secondary btn-sm w-100">Limpiar</button>
+                  </div>
+
+                  <div class="col-6">
+                    <button type="submit" class="btn btn-success btn-sm w-100" [disabled]="new_skill_form.invalid || new_skill_form.value.skill_id == 'Elige una habilidad'">Guardar</button>
+                  </div>
+                  
+                </div>
+              </form>
             </div>
           </div>
         }
 
-        @for (skillsGroup of profile.skills_groups; track $index) {
+        @for (skillsGroup of profile.skill_groups; track $index) {
           <div class="col-12 col-md-6 col-lg-12">
-            <skills-group [skillsGroup]="skillsGroup"></skills-group>
+            <skills-group [skillsGroup]="skillsGroup" [owner]="owner"></skills-group>
           </div>
         }
 
@@ -199,6 +225,7 @@
       </div>
     </div>
   </div>
+
 } @else {
   <h1 class="text-center">No encuentro el perfil</h1>
 }

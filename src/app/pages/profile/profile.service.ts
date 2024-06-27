@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy, inject } from '@angular/core';
-import { Profile } from './profile.interface';
+import { Profile } from './interfaces/profile.interface';
 import { Observable, Subscription, firstValueFrom, switchMap } from 'rxjs';
 import { environment as dev } from '@environments/environment';
 import { SessionService } from '../../components/navbar/session/session.service';
 import { Session } from '../../components/navbar/session/session.interface';
+import { profile_skill_group_skill } from './interfaces/profile_skill_group_skill.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import { Session } from '../../components/navbar/session/session.interface';
 export class ProfileService {
 
   private api = `${dev.apiUrl}/profile`;
+  private profile_skill_group_skill_url = `${dev.apiUrl}/profile_skill_group_skill`;
 
   constructor(
     private _http: HttpClient,
@@ -23,13 +25,17 @@ export class ProfileService {
   }
 
   getProfileByUsername(username: string): Observable<Profile> {
-    return this._http.get<Profile>(`${this.api}/${username}`);
+    return this._http.get<Profile>(`${this.api}/username/${username}`);
   }
 
   save(profile: Profile): Observable<Profile> {
-    const {id, ...body} = profile;
+    const { id, ...body } = profile;
 
     return this._http.put<Profile>(`${this.api}/${id}`, body);
+  }
+
+  save_new_skill(skill: profile_skill_group_skill): Observable<any> {
+    return this._http.post(`${this.profile_skill_group_skill_url}`, skill);
   }
 
   // got(): Profile {

@@ -9,14 +9,14 @@ body {
   @extend .text-light;
 
   animation: moverDerechaIzquierda 10s linear infinite;
-  background-color:$gray-900;
+  background-color: $gray-900;
   background-image: linear-gradient(30deg, $gray-800 12%, transparent 12.5%, transparent 87%, $gray-800 87.5%, $gray-800),
-  linear-gradient(150deg, $gray-800 12%, transparent 12.5%, transparent 87%, $gray-800 87.5%, $gray-800),
-  linear-gradient(30deg, $gray-800 12%, transparent 12.5%, transparent 87%, $gray-800 87.5%, $gray-800),
-  linear-gradient(150deg, $gray-800 12%, transparent 12.5%, transparent 87%, $gray-800 87.5%, $gray-800),
-  linear-gradient(60deg, $gray-700 25%, transparent 25.5%, transparent 75%, $gray-700 75%, $gray-700),
-  linear-gradient(60deg, $gray-700 25%, transparent 25.5%, transparent 75%, $gray-700 75%, $gray-700);
-  background-size:80px 140px;
+    linear-gradient(150deg, $gray-800 12%, transparent 12.5%, transparent 87%, $gray-800 87.5%, $gray-800),
+    linear-gradient(30deg, $gray-800 12%, transparent 12.5%, transparent 87%, $gray-800 87.5%, $gray-800),
+    linear-gradient(150deg, $gray-800 12%, transparent 12.5%, transparent 87%, $gray-800 87.5%, $gray-800),
+    linear-gradient(60deg, $gray-700 25%, transparent 25.5%, transparent 75%, $gray-700 75%, $gray-700),
+    linear-gradient(60deg, $gray-700 25%, transparent 25.5%, transparent 75%, $gray-700 75%, $gray-700);
+  background-size: 80px 140px;
   background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
 }
 
@@ -24,6 +24,7 @@ body {
   0% {
     background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
   }
+
   100% {
     background-position: 80px 0, 80px 0, 120px 70px, 120px 70px, 80px 0, 120px 70px;
   }
@@ -47,7 +48,7 @@ h6 {
 }
 
 .blur {
-  background: rgba(0, 0, 0, 0.5 );
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
   @extend .rounded;
   @extend .shadow;
@@ -67,22 +68,23 @@ mat-icon.small {
 }
 
 .bg-indigo {
-  background-color: $indigo;
+  background-color: $indigo !important;
 }
 
 .bg-purple {
-  background-color: $purple;
+  background-color: $purple !important;
 }
 
 .bg-orange {
-  background-color: $orange;
+  background-color: $orange !important;
 }
 
 .bg-pink {
-  background-color: $pink;
+  background-color: $pink !important;
 }
 
-.progress, .progress-stacked {
+.progress,
+.progress-stacked {
   background-color: $gray-800 !important;
 }
 
@@ -96,4 +98,16 @@ hr {
 
 .cdk-overlay-dark-backdrop {
   background: rgba(0, 0, 0, .50) !important;
+}
+
+select option:hover {
+  background-color: transparent !important;
+}
+
+.btn-mini {
+  position: relative;
+  height: 16px !important;
+  width: 18px !important;
+  padding: 0 !important;
+  margin-top: 3px;
 }

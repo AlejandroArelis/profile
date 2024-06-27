@@ -28,4 +28,8 @@ export class SkillsService {
   delete(id: string): Observable<string> {
     return this._http.delete<string>(`${this.apiUrl}/${id}`);
   }
+
+  get_avalibles(profile_id: string): Observable<Skill[]> {
+    return this._http.get<Skill[]>(`${this.apiUrl}/avalible/${profile_id}`);
+  }
 }

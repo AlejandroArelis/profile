@@ -11,4 +11,5 @@ import { SkillGroup } from '@pages/skill-groups/skills-group.interface';
 })
 export class SkillsGroupComponent {
   @Input() skillsGroup!: SkillGroup | undefined;
+  @Input() owner!: boolean;
 }

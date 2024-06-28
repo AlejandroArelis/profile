@@ -15,9 +15,11 @@
       <div class="progress-bar progress-bar-striped progress-bar-animated" [ngClass]="'bg-' + skill.color" [ngStyle]="{'width': skill.percentage + '%'}"></div>
     </div>
   </div>
-  <div class="col-auto m-0" *ngIf="owner">
-    <button class="btn btn-danger btn-mini">
-      <em class="fa-solid fa-trash fa-2xs" style="position: absolute; top: 2px; left: 3px;"></em>
-    </button>
-  </div>
+  @if (owner && skill.id) {
+    <div class="col-auto m-0">
+      <button class="btn btn-danger btn-mini" (click)="delete_skill(skill.id)">
+        <em class="fa-solid fa-trash fa-2xs" style="position: absolute; top: 2px; left: 3px;"></em>
+      </button>
+    </div>
+  }
 </div>

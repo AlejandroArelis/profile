@@ -17,6 +17,7 @@ import { SkillGroup } from '@pages/skill-groups/skills-group.interface';
 import { SkillsService } from '@pages/skills/skills.service';
 import { Skill } from './components/skills-group/components/skill/skill.interface';
 import { ToastrService } from 'ngx-toastr';
+import { SortPipe } from '@pipes/sort.pipe';
 
 @Component({
   selector: 'app-profile',
@@ -30,7 +31,8 @@ import { ToastrService } from 'ngx-toastr';
     CopyComponent,
     PhonePipe,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SortPipe
   ],
   templateUrl: './profile.component.html'
 })
@@ -72,7 +74,6 @@ export default class ProfileComponent implements OnInit, OnDestroy {
           const user_name = params["user_name"];
 
           if (user_name) {
-            console.log("jejejejejeje", user_name);
             this.profile = await firstValueFrom(this._profileService.getProfileByUsername(user_name));
           } else if (this.session) {
             this.profile = await firstValueFrom(this._profileService.getProfile(this.session));
@@ -126,9 +127,50 @@ export default class ProfileComponent implements OnInit, OnDestroy {
         });
       }
 
-      
-      this.avalible_skills = this.avalible_skills.filter((skill:Skill) => skill.id != this.new_skill_form.value.skill_id);
-      this.new_skill_form.reset();
+      this.avalible_skills = this.avalible_skills.filter((skill: Skill) => skill.id != this.new_skill_form.value.skill_id);
+      this.new_skill_form.patchValue({
+        skill_id: "Elige una habilidad",
+        percentage: 0
+      });
+    } catch (e: any) {
+      console.error(e);
+      this._toastr.error(e.error.detail);
+    }
+  }
+
+  async delete_skill(id: string) {
+    try {
+      const response = await firstValueFrom(this._profileService.delete_skill(id));
+      if(typeof response == "object" && this.profile.skill_groups) {
+
+        this.avalible_skills.push(response);
+
+        let found = false;
+
+        for(let i = 0; i < this.profile.skill_groups?.length; i ++) {
+          let skill_group = this.profile.skill_groups[i];
+          for(let j = 0; j < skill_group.skills.length; j ++) {
+            let skill = skill_group.skills[j];
+
+            if(skill.id == id) {
+              this.profile.skill_groups[i].skills.splice(j, 1);
+              
+              // Valida si el skill_group aún tiene elementos
+              if (this.profile.skill_groups[i].skills.length === 0) {
+                // Si no tiene elementos, eliminar el skill_group
+                this.profile.skill_groups.splice(i, 1);
+              }
+
+              found = true;
+              break;
+            }
+          }
+
+          if(found) {
+            break;
+          }
+        }
+      }
     } catch (e: any) {
       console.error(e);
       this._toastr.error(e.error.detail);

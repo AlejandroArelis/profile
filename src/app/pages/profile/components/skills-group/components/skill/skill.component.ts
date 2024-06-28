@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CopyComponent } from '../../../../../../components/copy/copy.component';
 import { Skill } from './skill.interface';
@@ -13,9 +13,14 @@ import { Skill } from './skill.interface';
 export class SkillComponent implements OnInit {
   @Input() skill: Skill;
   @Input() owner!: boolean;
+  @Output() output: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {
     this.skill = {};
+  }
+
+  delete_skill(id: string) {
+    this.output.emit(id);
   }
 
   ngOnInit(): void { }

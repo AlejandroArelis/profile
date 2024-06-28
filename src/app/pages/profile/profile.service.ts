@@ -6,6 +6,7 @@ import { environment as dev } from '@environments/environment';
 import { SessionService } from '../../components/navbar/session/session.service';
 import { Session } from '../../components/navbar/session/session.interface';
 import { profile_skill_group_skill } from './interfaces/profile_skill_group_skill.interface';
+import { SkillGroup } from '@pages/skill-groups/skills-group.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,12 @@ export class ProfileService {
     return this._http.put<Profile>(`${this.api}/${id}`, body);
   }
 
-  save_new_skill(skill: profile_skill_group_skill): Observable<any> {
-    return this._http.post(`${this.profile_skill_group_skill_url}`, skill);
+  save_new_skill(skill: profile_skill_group_skill): Observable<SkillGroup> {
+    return this._http.post<SkillGroup>(`${this.profile_skill_group_skill_url}`, skill);
+  }
+
+  delete_skill(id: string): Observable<boolean> {
+    return this._http.delete<boolean>(`${this.profile_skill_group_skill_url}/${id}`);
   }
 
   // got(): Profile {

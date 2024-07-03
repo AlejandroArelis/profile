@@ -3,23 +3,42 @@
     <img [src]="skill.image" style="width: 20px;">
   </div>
   <div [ngClass]="{'col-auto': !skill.percentage, 'col-4': skill.percentage}">
-    <a class="ms-2">{{skill.name}}</a>
-    <!--<copy *ngIf="skill.type === 'text'" [value]="skill.text" [type]="'text'"></copy> -->
+    <label class="ms-2">{{skill.name}}</label>
   </div>
-  <!-- <div class="col-auto" *ngIf="skill.type !== 'text'">
-    <copy [value]="skill.value!"></copy>
-  </div> -->
   <div class="col" *ngIf="skill.percentage">
-    <div class="progress" role="progressbar" *ngIf="skill.percentage">
-      <!-- <div class="progress-bar progress-bar-striped progress-bar-animated" [ngClass]="skill.progress.color" [ngStyle]="{'width': skill.progress.value + '%'}"></div> -->
-      <div class="progress-bar progress-bar-striped progress-bar-animated" [ngClass]="'bg-' + skill.color" [ngStyle]="{'width': skill.percentage + '%'}"></div>
-    </div>
+    @if (editing) {
+      <input type="range" class="form-range pb-2" id="percentageRange" [(ngModel)]="percentage">
+    } @else {
+      <div class="progress" role="progressbar" *ngIf="skill.percentage">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" [ngClass]="'bg-' + skill.color" [ngStyle]="{'width': skill.percentage + '%'}"></div>
+      </div>
+    }
   </div>
   @if (owner && skill.id) {
-    <div class="col-auto m-0">
-      <button class="btn btn-danger btn-mini" (click)="delete_skill(skill.id)">
-        <em class="fa-solid fa-trash fa-2xs" style="position: absolute; top: 2px; left: 3px;"></em>
-      </button>
-    </div>
+    @if (editing) {
+      <div class="col-auto m-0">
+        <button class="btn btn-info btn-mini" (click)="update()">
+          <em class="text-light fa-solid fa-cloud-arrow-up fa-2xs" style="position: absolute; top: 2px; left: 2px;"></em>
+        </button>
+      </div>
+
+      <div class="col-auto m-0">
+        <button class="btn btn-secondary btn-mini" (click)="editing = false;">
+          <em class="fa-solid fa-rotate-left fa-2xs" style="position: absolute; top: 2px; left: 3px;"></em>
+        </button>
+      </div>
+    } @else {
+      <div class="col-auto m-0">
+        <button class="btn btn-warning btn-mini" (click)="percentage = skill.percentage ?? 0; editing = true;">
+          <em class="fa-solid fa-pen fa-2xs" style="position: absolute; top: 2px; left: 3px;"></em>
+        </button>
+      </div>
+
+      <div class="col-auto m-0">
+        <button class="btn btn-danger btn-mini" (click)="delete_skill(skill.id)">
+          <em class="fa-solid fa-trash fa-2xs" style="position: absolute; top: 2px; left: 3px;"></em>
+        </button>
+      </div>
+    }
   }
 </div>

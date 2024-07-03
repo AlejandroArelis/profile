@@ -7,6 +7,7 @@ import { SessionService } from '../../components/navbar/session/session.service'
 import { Session } from '../../components/navbar/session/session.interface';
 import { profile_skill_group_skill } from './interfaces/profile_skill_group_skill.interface';
 import { SkillGroup } from '@pages/skill-groups/skills-group.interface';
+import { Skill } from './components/skills-group/components/skill/skill.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,10 @@ export class ProfileService {
 
   delete_skill(id: string): Observable<boolean> {
     return this._http.delete<boolean>(`${this.profile_skill_group_skill_url}/${id}`);
+  }
+
+  update_skill(skill: Skill): Observable<boolean> {
+    return this._http.put<boolean>(`${this.profile_skill_group_skill_url}/${skill.id}?percentage=${skill.percentage}`, {});
   }
 
   // got(): Profile {
